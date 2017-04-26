@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<title>jPopup - simple lightweight javascript popup modal</title>
+<meta charset='utf-8'>
+<meta name='description' content='Simple lightweight javascript popup modal plugin'>
+<meta name='robots' content='index, follow'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+<link href='css/jPopup.css' rel='stylesheet' type='text/css'>
+</head>
+
+<style> 
+
+    /*** DEMO style ***/
+
+
+
+    html {
+
+        font-size: 62.5%;
+
+    }
+
+    html, body { 
+
+        background: #f9f9f9; margin: 0; padding: 0; font-family: 'Comfortaa', cursive, serif; color: #818da5;
+
+    }
+
+    h1 {
+
+        font-size: 80px; text-align: center; margin: 80px auto 20px auto;
+
+    }
+
+    h2 {
+
+        font-size: 20px; text-align: center; line-height: 1.5; padding: 0; margin: 0;
+
+    }
+
+    .openPopup {
+
+        width: 280px; display: block; margin: 80px auto 0 auto; padding: 30px 50px; outline: 0; border: 0; box-sizing: border-box; cursor: pointer;
+        background: #818da5; font-family: 'Comfortaa', cursive, serif; font-size: 16px; color: #fff; text-align: center; text-transform: uppercase;
+        border-radius: 4px;
+
+    }
+
+    .btn {
+
+        color: #3A3A3A; text-align: center; background: #f9f9f9; padding: 20px; margin: 60px auto 50px auto; border: 2px solid #3A3A3A;
+        border-radius: 2px; text-decoration: none; display: block; width: 120px; font-family: 'Comfortaa', cursive, serif; font-size: 14px;
+    }
+
+    .jPopup .content {
+
+        text-align: center;
+
+    }
+
+    .jPopup .content strong {
+
+        font-size: 50px;
+
+    }
+
+    .jPopup .content p {
+
+        font-size: 22px;
+
+    }
+
+</style>
+
+<body>
+
+<h1>jPopup</h1>
+
+<h2>Simple lightweight javascript popup modal plugin</h2>
+
+<button class="openPopup" type="button">Demo</button>
+
+<a class="btn" href="https://github.com/robiveli/jpopup">View on GitHub</a>
+
+<script src="js/jPopup.min.js"></script>
+<script>
+
+    /*** DEMO js ***/
+    
+    document.querySelector('.openPopup').addEventListener('click', function() {
+
+        var jPopupDemo = new jPopup({
+
+            contentHtml: '<strong>Hurray</strong>\
+                    <p>You can put any content you want here.</p>'
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

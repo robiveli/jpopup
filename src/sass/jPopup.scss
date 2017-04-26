@@ -1,0 +1,105 @@
+@import 'library/all'; 
+
+.jPopupOpen {
+
+    &, body {
+
+        overflow: hidden;
+
+    }
+
+    .jPopup {
+
+        @include animation('slideIn 500ms cubic-bezier(.34,.34,.26,.99)'); 
+
+    }
+
+}
+
+.jPopupClosed {
+
+    .jPopup {
+
+        @include animation('slideOut 250ms ease-in');  
+
+    }
+
+}
+ 
+.jPopup { 
+
+    position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 9999;
+    max-width: 100%; padding: 50px 15px 15px; box-sizing: border-box;
+    
+
+    &:after {
+
+        content: '';  position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 9998; 
+        background: $bgColor;
+
+    }
+
+    > .jCloseBtn {
+
+        position: absolute; right: 0; top: 0; z-index: 9999;
+        outline: 0; border: 0; box-sizing: border-box; cursor: pointer;
+        width: 50px; height: 50px; background: transparent; 
+
+        > svg {
+
+            width: 30px; height: 100%; fill: $closeBtnColor; 
+            @include transition(transform 300ms ease-in-out);
+
+        }
+
+        &:hover {
+
+            > svg {
+
+                @include transform(rotate(180deg)); 
+
+            }
+
+        }
+
+        &:active {
+
+            margin-top: 1px;
+
+        }
+
+    } 
+
+    > .content {
+
+        top: 50%; left: 15px; right: 15px; position: absolute; z-index: 9999;
+
+        @include transform(translateY(-50%));
+
+    }
+
+    @media screen and (min-width: $baseBreakpoint) { 
+
+        padding: 80px 30px 30px;
+
+        > .jCloseBtn {
+
+            right: 10px; top: 10px; width: 60px; height: 60px;
+
+            > svg {
+
+                width: 40px; height: 100%; 
+
+            }
+
+        }
+
+         > .content {
+
+            left: 30px; right: 30px; 
+
+        }
+
+    }
+
+}

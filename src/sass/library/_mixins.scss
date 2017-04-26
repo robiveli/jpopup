@@ -1,0 +1,40 @@
+// keyframes 
+@mixin keyframes($animation-name) {
+
+    @-webkit-keyframes #{$animation-name} {
+
+        @content;
+
+    }
+
+    @keyframes #{$animation-name} {
+
+        @content;
+
+    }
+    
+}
+
+// animation 
+@mixin animation($args) {
+
+    -webkit-animation: #{$args};
+    animation: #{$args};
+
+}
+
+// transform 
+@mixin transform($args) {
+
+    -webkit-transform: $args;
+    transform: $args;
+
+}
+
+// transition 
+@mixin transition($args) {
+
+    -webkit-transition: $args;
+    transition: $args;
+
+}

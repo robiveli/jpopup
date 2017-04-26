@@ -1,0 +1,27 @@
+{
+  "name": "jpopup",
+  "version": "1.0.0",
+  "description": "Simple lightweight javascript popup modal plugin",
+  "main": [
+    "dist/css/",
+    "dist/js/",
+    "README.md"
+  ],
+  "authors": [
+    "Robert Velickovski"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "modal",
+    "popup",
+    "vanilla",
+    "simple",
+    "lightweight"
+  ],
+  "homepage": "https://github.com/robiveli/jpopup",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test"
+  ]
+}
