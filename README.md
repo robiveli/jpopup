@@ -48,7 +48,7 @@ Demo available [here](http://www.rvdizajn.com/jpopup/).
 
         var jPopupDemo = new jPopup({
 
-            content: '<strong>Hurray</strong>\
+            contentHtml: '<strong>Hurray</strong>\
                     <p>You can put any content you want here.</p>'
 
         });
