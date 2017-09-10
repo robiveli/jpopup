@@ -7,7 +7,7 @@ module.exports = function (config) {
         frameworks: ['mocha', 'chai', 'sinon'],
 
         files: [
-            'https://code.jquery.com/jquery-2.2.4.min.js', /* for easier testing only */ 
+            'https://code.jquery.com/jquery-2.2.4.min.js', 
             
             'dist/js/*.js',
             'test/*.js'
@@ -40,7 +40,8 @@ module.exports = function (config) {
             }
         },
 
-        browsers: ['Chrome']
+        browsers: ['PhantomJs']
 
     });
+    
 };

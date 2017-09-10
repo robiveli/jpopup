@@ -31,7 +31,7 @@ Initialize jPopup:
 ```sh
 <script>
     var myPopup = new jPopup({
-    	contentHtml: '<p>My popup text</p>'
+    	content: '<p>My popup text</p>'
     });
 </script>
 ```
@@ -48,7 +48,7 @@ Demo available [here](http://www.rvdizajn.com/jpopup/).
 
         var jPopupDemo = new jPopup({
 
-            contentHtml: '<strong>Hurray</strong>\
+            content: '<strong>Hurray</strong>\
                     <p>You can put any content you want here.</p>'
 
         });
@@ -57,7 +57,14 @@ Demo available [here](http://www.rvdizajn.com/jpopup/).
 </script>
 ```
 
-Default css settings are placed in `/sass/library/_setup.scss`:
+### Options ###
+
+jPopup can take an optional parameters - an object of key/value settings:
+
+- **content** String *(required)* - string of content to display
+- **hash** Boolean *(default:true)* - should popup append hashtag (`#popup`) in the current url (applied [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API))
+
+Default css styling are placed in `/sass/library/_setup.scss`:
 
 - **$baseBreakpoint** *(default:680px)* - media query breakpoint value
 - **$bgColor** *(default:#fff)* - popup background color
@@ -66,7 +73,16 @@ Default css settings are placed in `/sass/library/_setup.scss`:
 
 ### API ###
 
+`open()` - open popup
+
 `close()` - close popup
+
+
+### Browser support ###
+
+It works in every modern browser where [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) and [classList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList) are supported.
+
+Consider using polyfills for [Promise](https://github.com/stefanpenner/es6-promise) and [classList](https://github.com/eligrey/classList.js/) features if needed.
 
 
 ### License  ###

@@ -1,122 +1,54 @@
 describe('jPopup', function() {
 
-    var sandbox;
-
     var dummyPopup,
-        dummyContent,
-        initSpy,
-        buildPopupSpy,
-        setupEventsSpy,
-        closeSpy;
+        dummyContent;
 
     before(function() {
 
-        // set test environment 
-        sandbox = sinon.sandbox.create();
-
         dummyContent = '<h1>Title</h1>'
-
-        initSpy = sandbox.spy(jPopup.prototype, 'init');
-        buildPopupSpy = sandbox.spy(jPopup.prototype, 'buildPopup');
-        setupEventsSpy = sandbox.spy(jPopup.prototype, 'setupEvents');
-        closeSpy = sandbox.spy(jPopup.prototype, 'close');
 
         dummyPopup = new jPopup({
 
-            contentHtml: dummyContent
+            content: dummyContent
 
         });
 
     });
 
-    after(function() {
+    describe('open()', function() {
 
-        // reset test environment 
-        sandbox.restore();
-
-    });
-
-    describe('init', function() {
-
-        it('should add \'.jPopupOpen\' class to html', function() {
+        it('should open new popup with passed content', function() {
 
             expect($('html').hasClass('jPopupOpen')).equal(true);
+            expect($('.jPopup').length).equal(1);
+            expect($('.jPopup .content').html()).equal(dummyContent);
 
         });
 
-        it('should init buildPopup() method', function() {
+        it('should append new hastag in current url', function() {
 
-            expect(initSpy.calledOnce).equal(true);
-
-        });
-
-    });
-
-    describe('buildPopup', function() {
-
-        it('should append popup html template into body', function() {
-
-            expect($('body').find('.jPopup').length).equal(1);
-
-        });
-
-        it('should init setupEvents() method', function() {
-
-            expect(setupEventsSpy.calledOnce).equal(true);
+            expect(window.location.hash).equal('#popup');
 
         });
 
     });
 
-    describe('setupEvents', function() {
+    describe('close()', function() {
 
-        before(function() {
+        it('should remove popup from DOM and appended hastag from current url', function(done) {
 
-            closeSpy.reset();
-            $('.jCloseBtn').click();
-
-        });
-
-        it('should init close() method by clicking on \'.jCloseBtn\' button', function() {
-
-            expect(closeSpy.calledOnce).equal(true);
-
-        });
-
-    });
-
-    describe.skip('close', function() {
-
-        var clock,
-            animationEnd;
-
-        before(function() {
-
-            clock = sandbox.useFakeTimers();
-            animationEnd = 250;
+            var animationTime = 250;
 
             dummyPopup.close();
 
-        });
+            setTimeout(function() {
 
-        it('should add \'.jPopupClosed\' class to html', function() {
+                expect($('body').find('.jPopup').length).equal(0);
+                expect(window.location.hash).equal('');
 
-            expect($('html').hasClass('jPopupClosed')).equal(true);
+                done();
 
-        });
-
-        it('should remove \'.jPopup\' element when animation is finished', function() {
-
-            clock.tick(animationEnd);
-
-            expect($('body').find('.jPopup').length).equal(0);
-
-        });
-
-        it('should remove \'.jPopupClosed\' and \'.jPopupOpen\' classes from html when animation is finished', function() {
-
-            expect($('html').hasClass('jPopupClosed')).equal(false);
-            expect($('html').hasClass('jPopupOpen')).equal(false);
+            }, animationTime);
 
         });
 

@@ -7,6 +7,7 @@
 <meta name='robots' content='index, follow'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+<script async defer src="https://buttons.github.io/buttons.js"></script>
 <link href='css/jPopup.css' rel='stylesheet' type='text/css'>
 </head>
 
@@ -42,16 +43,16 @@
 
     .openPopup {
 
-        width: 280px; display: block; margin: 80px auto 0 auto; padding: 30px 50px; outline: 0; border: 0; box-sizing: border-box; cursor: pointer;
-        background: #818da5; font-family: 'Comfortaa', cursive, serif; font-size: 16px; color: #fff; text-align: center; text-transform: uppercase;
-        border-radius: 4px;
+        width: 280px; display: block; margin: 80px auto 0 auto; padding: 30px 50px; outline: 0; box-sizing: border-box; cursor: pointer;
+        background: #fff; font-family: 'Comfortaa', cursive, serif; font-size: 16px; color: #818da5; text-align: center; text-transform: uppercase;
+        border-radius: 4px; border: 2px solid #818da5; font-weight: bold; box-shadow: 0 3px 10px #ddd;
 
     }
 
-    .btn {
+    .btnWrap {
 
-        color: #3A3A3A; text-align: center; background: #f9f9f9; padding: 20px; margin: 60px auto 50px auto; border: 2px solid #3A3A3A;
-        border-radius: 2px; text-decoration: none; display: block; width: 120px; font-family: 'Comfortaa', cursive, serif; font-size: 14px;
+        margin: 100px auto; text-align: center;
+
     }
 
     .jPopup .content {
@@ -72,6 +73,28 @@
 
     }
 
+    @media screen and (max-width: 640px) {
+
+        h1 {
+
+        font-size: 50px; margin: 80px auto 20px auto;
+
+        }
+
+        h2 {
+
+            font-size: 16px; margin: 0 20px;
+
+        }
+
+        .openPopup {
+
+            padding: 20px 30px;
+
+        }
+
+    }
+
 </style>
 
 <body>
@@ -80,9 +103,12 @@
 
 <h2>Simple lightweight javascript popup modal plugin</h2>
 
-<button class="openPopup" type="button">Demo</button>
+<button class="openPopup" type="button">Open popup</button>
 
-<a class="btn" href="https://github.com/robiveli/jpopup">View on GitHub</a>
+<footer class="btnWrap">
+    <a class="github-button" href="https://github.com/robiveli/jpopup" data-size="large" aria-label="View on GitHub">View on GitHub</a>
+    <a class="github-button" href="https://github.com/robiveli/jpopup/archive/master.zip" data-icon="octicon-cloud-download" data-size="large" egaaria-label="Download robiveli/jCaptcha on GitHub">Download</a>
+</footer>
 
 <script src="js/jPopup.min.js"></script>
 <script>
@@ -93,7 +119,7 @@
 
         var jPopupDemo = new jPopup({
 
-            contentHtml: '<strong>Hurray</strong>\
+            content: '<strong>Hurray</strong>\
                     <p>You can put any content you want here.</p>'
 
         });

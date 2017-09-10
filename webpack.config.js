@@ -1,8 +1,8 @@
 const outputFile = 'jPopup';
 
-var webpack = require('webpack');
-var extractTextPlugin = require('extract-text-webpack-plugin');
-var optimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+var webpack = require('webpack'),
+    extractTextPlugin = require('extract-text-webpack-plugin'),
+    optimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 var minifyJs = new webpack.optimize.UglifyJsPlugin({
     beautify: false,
@@ -37,6 +37,9 @@ var minifyCss = new optimizeCssAssetsPlugin({
 
 module.exports = {
 
+    watch: true,
+    cache: true,
+
     entry: ['./src/js/jPopup.js', './src/sass/jPopup.scss', './src/index.html'],
 
     output: {
@@ -52,7 +55,13 @@ module.exports = {
                 use: [
                     {
                         loader: 'babel-loader',
-                        options: { presets: [ 'latest' ] }
+                        options: { 
+                            presets: [['env', {
+                                'targets': {
+                                    'browsers': ['last 5 versions', 'Explorer >= 9']
+                                }
+                            }]] 
+                        }
                     },
                     {
                         loader: 'eslint-loader'
@@ -62,8 +71,9 @@ module.exports = {
             { 
                 test: /\.css$/,
                 use: extractTextPlugin.extract({
-                    loader: 'css-loader?importLoaders=1',
-                }),
+                    use: 'css-loader',
+                    fallback: 'style-loader'
+                })
             },
             { 
                 test: /\.scss$/,
@@ -80,8 +90,6 @@ module.exports = {
         extractSass,
         minifyCss,
         minifyJs,
-    ],
-
-    watch: true,
+    ]
 
 }
