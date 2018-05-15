@@ -1,5 +1,5 @@
 # jPopup #
-### Simple lightweight javascript popup modal plugin ###
+### Simple lightweight (2.38 KB) javascript popup modal plugin ###
 
 ### Another popop? ###
 Yep, I needed simple as possible modal plugin for personal use, so jPopup was born.
