@@ -1,4 +1,4 @@
-{ 
+{
     'use strict';
 
     const $html = document.querySelector('html');
@@ -71,16 +71,16 @@
         close(popupEvent) {
 
             $html.classList.add('jPopupClosed');
-            
+
             if (shouldSetHash == true) {
 
                 popupEvent && setHash(false);
                 window.removeEventListener('hashchange', onHashChange);
 
-            } 
+            }
 
             window.removeEventListener('keydown', onEscPress);
-            
+
             document.getElementsByClassName('jPopup')[0].addEventListener('animationend', function(e) {
 
                 e.target.parentNode.removeChild(this);
@@ -101,7 +101,5 @@
     };
 
     window.jPopup = jPopup;
-    window.jPopup.close = jPopup.prototype.close;
-    window.jPopup.open = jPopup.prototype.open;
 
 }
