@@ -1,5 +1,5 @@
 # jPopup #
-### Simple lightweight (2.37 KB) javascript popup modal plugin ###
+### Simple lightweight (2.01 kB) javascript popup modal plugin ###
 
 ### Another popop? ###
 Yep, I needed simple as possible modal plugin for personal use, so jPopup was born.
@@ -7,23 +7,27 @@ Yep, I needed simple as possible modal plugin for personal use, so jPopup was bo
 ### Install ###
 
 With npm:
-```sh
-npm install jpopup
+```
+npm install jpopup --save
 ```
 
 ### Usage ###
 
 Include required javascript:
-```sh
+```
 <script src="jPopup.js"></script>
+```
+or
+```
+import jPopup from 'jPopup';
 ```
 
 Include css:
-```sh
-<link href='jPopup.css' rel='stylesheet' type='text/css'>
+```
+<link href='jPopup.min.css' rel='stylesheet' type='text/css'>
 ```
 Initialize jPopup (popup opened immediately):
-```sh
+```
 <script>
     var myPopup = new jPopup({
     	content: '<p>My popup text</p>'
@@ -37,7 +41,7 @@ Demo available [here](http://www.rvdizajn.com/jpopup/).
 
 ### Example ###
 
-```sh
+```
 <script>
     document.querySelector('.openPopup').addEventListener('click', function() {
 
@@ -73,7 +77,7 @@ Default css styling are placed in `/sass/library/_setup.scss`:
 `close()` - close popup
 
 For example:
-```sh
+```
 <script>
 
     var jPopupDemo = new jPopup({
