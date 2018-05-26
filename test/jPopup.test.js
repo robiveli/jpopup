@@ -7,7 +7,7 @@ describe('jPopup', function() {
 
         dummyContent = '<h1>Title</h1>'
 
-        dummyPopup = new jPopup({
+        dummyPopup = new jPopup({ // open() method invoked
 
             content: dummyContent
 
@@ -35,18 +35,18 @@ describe('jPopup', function() {
 
     describe('close()', function() {
 
-        it('should remove popup from DOM and appended hastag from current url', function(done) {
+        it('should remove popup from DOM', function() {
 
-            var animationTime = 250;
+            var animationTime = 350;
 
             dummyPopup.close();
 
-            setTimeout(function() {
+            return setTimeout(() => {
 
                 expect($('body').find('.jPopup').length).equal(0);
-                expect(window.location.hash).equal('');
-
-                done();
+				expect(window.location.hash).equal('');
+				expect($('html').hasClass('jPopupOpen')).equal(false);
+				expect($('html').hasClass('jPopupClosed')).equal(false);
 
             }, animationTime);
 
