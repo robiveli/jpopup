@@ -22,7 +22,7 @@ Include css:
 ```sh
 <link href='jPopup.css' rel='stylesheet' type='text/css'>
 ```
-Initialize jPopup:
+Initialize jPopup (popup opened immediately):
 ```sh
 <script>
     var myPopup = new jPopup({
@@ -71,6 +71,25 @@ Default css styling are placed in `/sass/library/_setup.scss`:
 `open()` - open popup
 
 `close()` - close popup
+
+For example:
+```sh
+<script>
+
+    var jPopupDemo = new jPopup({
+
+        content: 'Lorem Ipsum...'
+
+    });
+
+    setInterval(function() {
+
+        jPopupDemo.close();
+
+    }, 2000);
+
+</script>
+```
 
 
 ### Browser support ###
