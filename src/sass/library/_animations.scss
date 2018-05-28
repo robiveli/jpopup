@@ -1,23 +1,23 @@
 // Animations
 @include keyframes(slideIn) {
 
-    0% { 
+    0% {
 
         opacity: 0;
-        @include transform(scale(0.85)); 
+        @include transform(scale(0.85));
 
     }
 
-    70% { 
+    70% {
 
         opacity: 1;
-        @include transform(scale(1.03)); 
+        @include transform(scale(1.03));
 
     }
 
     100% {
 
-        @include transform(scale(1)); 
+        @include transform(scale(1));
 
     }
 
@@ -25,15 +25,31 @@
 
 @include keyframes(slideOut) {
 
-    from { 
+    from {
 
         opacity: 1;
 
     }
 
-    to { 
+    to {
 
         opacity: 0;
+
+    }
+
+}
+
+@include keyframes(rotate) {
+
+    from {
+
+        @include transform(rotate(0deg));
+
+    }
+
+    to {
+
+        @include transform(rotate(180deg));
 
     }
 

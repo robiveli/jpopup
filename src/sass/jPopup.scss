@@ -1,4 +1,4 @@
-@import 'library/all'; 
+@import 'library/all';
 
 .jPopupOpen {
 
@@ -10,7 +10,7 @@
 
     .jPopup {
 
-        @include animation('slideIn 500ms cubic-bezier(.34,.34,.26,.99)'); 
+        @include animation('slideIn 500ms cubic-bezier(.34,.34,.26,.99)');
 
     }
 
@@ -20,43 +20,62 @@
 
     .jPopup {
 
-        @include animation('slideOut 250ms ease-in');  
+        @include animation('slideOut 250ms ease-in');
 
     }
 
 }
- 
-.jPopup { 
+
+.jPopup {
 
     position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 9999;
     max-width: 100%; padding: 50px 15px 15px; box-sizing: border-box;
-    
+
 
     &:after {
 
-        content: '';  position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 9998; 
+        content: '';  position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 9998;
         background: $bgColor;
 
     }
 
     > .jCloseBtn {
 
-        position: absolute; right: 0; top: 0; z-index: 9999;
+        position: absolute; right: 1rem; top: 1rem; z-index: 9999;
         outline: 0; border: 0; box-sizing: border-box; cursor: pointer;
-        width: 50px; height: 50px; background: transparent; 
+		width: 5rem; height: 5rem; background: lighten($closeBtnColor, 27%); border-radius: 50%;
 
-        > svg {
+        > .graphicIcon {
 
-            width: 30px; height: 100%; fill: $closeBtnColor; 
-            @include transition(transform 300ms ease-in-out);
+			width: 2rem; height: 2rem; position: relative; margin: 0 auto;
+
+			&:before,
+			&:after {
+
+				position: absolute; left: 0.9rem; content: ''; height: 2rem; width: 0.3rem;
+				background-color: $closeBtnColor; border-radius: 0.5rem;
+
+			}
+
+			&:before {
+
+				transform: rotate(45deg);
+
+			}
+
+			&:after {
+
+				transform: rotate(-45deg);
+
+			}
 
         }
 
         &:hover {
 
-            > svg {
+            > .graphicIcon {
 
-                @include transform(rotate(180deg)); 
+                @include animation('rotate 250ms ease-in');
 
             }
 
@@ -64,39 +83,54 @@
 
         &:active {
 
-            margin-top: 1px;
+
+            transform: scale(0.95);
 
         }
 
-    } 
+    }
 
     > .content {
 
-        top: 50%; left: 15px; right: 15px; position: absolute; z-index: 9999;
+        top: 50%; left: 1.5rem; right: 1.5rem; position: absolute; z-index: 9999;
 
         @include transform(translateY(-50%));
 
     }
 
-    @media screen and (min-width: $baseBreakpoint) { 
+    @media screen and (min-width: $baseBreakpoint) {
 
-        padding: 80px 30px 30px;
+        padding: 8rem 3rem 3rem;
 
         > .jCloseBtn {
 
-            right: 10px; top: 10px; width: 60px; height: 60px;
+			width: 6rem; height: 6rem; right: 2rem; top: 2rem;
 
-            > svg {
+			&:after {
 
-                width: 40px; height: 100%; 
+				content: '(esc)'; position: absolute; top: 6.5rem; left: 50%; font-size: 1.1rem;
+				transform: translateX(-50%); color: $closeBtnColor; pointer-events: none;
 
-            }
+			}
+
+			> .graphicIcon {
+
+				width: 3rem; height: 3rem;
+
+				&:before,
+				&:after {
+
+					left: 1.4rem; height: 3rem;
+
+				}
+
+			}
 
         }
 
          > .content {
 
-            left: 30px; right: 30px; 
+            left: 3rem; right: 3rem;
 
         }
 

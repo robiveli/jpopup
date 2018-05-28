@@ -50,6 +50,28 @@
   }
 }
 
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+
 .jPopupOpen, .jPopupOpen body {
   overflow: hidden;
 }
@@ -89,41 +111,63 @@
 
 .jPopup > .jCloseBtn {
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 1rem;
+  top: 1rem;
   z-index: 9999;
   outline: 0;
   border: 0;
   box-sizing: border-box;
   cursor: pointer;
-  width: 50px;
-  height: 50px;
-  background: transparent;
+  width: 5rem;
+  height: 5rem;
+  background: #f2f2f2;
+  border-radius: 50%;
 }
 
-.jPopup > .jCloseBtn > svg {
-  width: 30px;
-  height: 100%;
-  fill: #adadad;
-  transition: -webkit-transform 300ms ease-in-out;
-  transition: transform 300ms ease-in-out;
-  transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+.jPopup > .jCloseBtn > .graphicIcon {
+  width: 2rem;
+  height: 2rem;
+  position: relative;
+  margin: 0 auto;
 }
 
-.jPopup > .jCloseBtn:hover > svg {
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-      transform: rotate(180deg);
+.jPopup > .jCloseBtn > .graphicIcon:before, .jPopup > .jCloseBtn > .graphicIcon:after {
+  position: absolute;
+  left: 0.9rem;
+  content: '';
+  height: 2rem;
+  width: 0.3rem;
+  background-color: #adadad;
+  border-radius: 0.5rem;
+}
+
+.jPopup > .jCloseBtn > .graphicIcon:before {
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.jPopup > .jCloseBtn > .graphicIcon:after {
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.jPopup > .jCloseBtn:hover > .graphicIcon {
+  -webkit-animation: rotate 250ms ease-in;
+  animation: rotate 250ms ease-in;
 }
 
 .jPopup > .jCloseBtn:active {
-  margin-top: 1px;
+  -webkit-transform: scale(0.95);
+      -ms-transform: scale(0.95);
+          transform: scale(0.95);
 }
 
 .jPopup > .content {
   top: 50%;
-  left: 15px;
-  right: 15px;
+  left: 1.5rem;
+  right: 1.5rem;
   position: absolute;
   z-index: 9999;
   -webkit-transform: translateY(-50%);
@@ -133,20 +177,36 @@
 
 @media screen and (min-width: 680px) {
   .jPopup {
-    padding: 80px 30px 30px;
+    padding: 8rem 3rem 3rem;
   }
   .jPopup > .jCloseBtn {
-    right: 10px;
-    top: 10px;
-    width: 60px;
-    height: 60px;
+    width: 6rem;
+    height: 6rem;
+    right: 2rem;
+    top: 2rem;
   }
-  .jPopup > .jCloseBtn > svg {
-    width: 40px;
-    height: 100%;
+  .jPopup > .jCloseBtn:after {
+    content: '(esc)';
+    position: absolute;
+    top: 6.5rem;
+    left: 50%;
+    font-size: 1.1rem;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+    color: #adadad;
+    pointer-events: none;
+  }
+  .jPopup > .jCloseBtn > .graphicIcon {
+    width: 3rem;
+    height: 3rem;
+  }
+  .jPopup > .jCloseBtn > .graphicIcon:before, .jPopup > .jCloseBtn > .graphicIcon:after {
+    left: 1.4rem;
+    height: 3rem;
   }
   .jPopup > .content {
-    left: 30px;
-    right: 30px;
+    left: 3rem;
+    right: 3rem;
   }
 }

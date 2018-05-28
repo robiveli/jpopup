@@ -37,7 +37,7 @@ Initialize jPopup (popup opened immediately):
 
 ### Demo ###
 
-Demo available [here](http://www.rvdizajn.com/jpopup/).
+Demo available [here](https://www.rvdizajn.com/jpopup/).
 
 ### Example ###
 
@@ -67,7 +67,7 @@ Default css styling are placed in `/sass/library/_setup.scss`:
 
 - **$baseBreakpoint** *(default:680px)* - media query breakpoint value
 - **$bgColor** *(default:#fff)* - popup background color
-- **$closeBtnColor** *(default:#adadad)* - color of close button
+- **$closeBtnColor** *(default:#adadad)* - base color of close button
 
 
 ### API ###
