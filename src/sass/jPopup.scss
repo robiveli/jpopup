@@ -1,31 +1,5 @@
 @import 'library/all';
 
-.jPopupOpen {
-
-    &, body {
-
-        overflow: hidden;
-
-    }
-
-    .jPopup {
-
-        @include animation('slideIn 500ms cubic-bezier(.34,.34,.26,.99)');
-
-    }
-
-}
-
-.jPopupClosed {
-
-    .jPopup {
-
-        @include animation('slideOut 250ms ease-in');
-
-    }
-
-}
-
 .jPopup {
 
     position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 9999;
@@ -133,6 +107,32 @@
             left: 3rem; right: 3rem;
 
         }
+
+    }
+
+}
+
+.jPopupOpen {
+
+    &, body {
+
+        overflow: hidden;
+
+    }
+
+    .jPopup {
+
+        @include animation('slideIn 500ms cubic-bezier(.34,.34,.26,.99)');
+
+    }
+
+}
+
+.jPopupClosed {
+
+    .jPopup {
+
+        @include animation('slideOut 250ms ease-in');
 
     }
 

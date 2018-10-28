@@ -30,7 +30,7 @@ module.exports = function (config) {
         singleRun: true,
 
         preprocessors: {
-			'src/js/*.js': 'coverage',
+			'**/src/js/*.js': 'coverage',
 			'src/js/*.js': ['babel'],
 			'test/*.js': ['babel']
         },
@@ -54,7 +54,7 @@ module.exports = function (config) {
 
 		babelPreprocessor: {
 			options: {
-			  	presets: ['env'],
+			  	presets: ['@babel/env'],
 			  	sourceMap: 'inline'
 			}
 		},

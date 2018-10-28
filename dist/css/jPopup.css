@@ -72,20 +72,6 @@
   }
 }
 
-.jPopupOpen, .jPopupOpen body {
-  overflow: hidden;
-}
-
-.jPopupOpen .jPopup {
-  -webkit-animation: slideIn 500ms cubic-bezier(.34,.34,.26,.99);
-  animation: slideIn 500ms cubic-bezier(.34,.34,.26,.99);
-}
-
-.jPopupClosed .jPopup {
-  -webkit-animation: slideOut 250ms ease-in;
-  animation: slideOut 250ms ease-in;
-}
-
 .jPopup {
   position: absolute;
   top: 0;
@@ -209,4 +195,18 @@
     left: 3rem;
     right: 3rem;
   }
+}
+
+.jPopupOpen, .jPopupOpen body {
+  overflow: hidden;
+}
+
+.jPopupOpen .jPopup {
+  -webkit-animation: slideIn 500ms cubic-bezier(.34,.34,.26,.99);
+  animation: slideIn 500ms cubic-bezier(.34,.34,.26,.99);
+}
+
+.jPopupClosed .jPopup {
+  -webkit-animation: slideOut 250ms ease-in;
+  animation: slideOut 250ms ease-in;
 }

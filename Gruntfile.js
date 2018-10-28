@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
 
 	const browsersList = grunt.file.readJSON('./package.json').browserslist;
+	const sass = require('node-sass');
 
     grunt.initConfig({
 
@@ -8,7 +9,21 @@ module.exports = function(grunt) {
             srcPath: 'src/',
             distPath: 'dist/',
             library: 'jPopup'
-        },
+		},
+
+		eslint: {
+			options: {
+				configFile: '.eslintrc.json'
+			},
+			target: ['<%= settings.srcPath %>js/<%= settings.library %>.js']
+		},
+
+		stylelint: {
+			options: {
+				configFile: '.stylelintrc'
+			},
+			all: ['<%= settings.srcPath %>sass/**/*.scss']
+		},
 
         babel: {
             dist: {
@@ -53,6 +68,7 @@ module.exports = function(grunt) {
                     ext: '.css'
                 }],
                 options: {
+					implementation: sass,
                     outputStyle: 'expanded',
                     sourceMap: false,
                     precision: 5
@@ -105,7 +121,7 @@ module.exports = function(grunt) {
             javascript: {
                 expand: true,
                 files: ['<%= settings.srcPath %>js/**/*.js'],
-                tasks: ['babel', 'umd', 'uglify'],
+                tasks: ['eslint', 'babel', 'umd', 'uglify'],
                 options: {
                     spawn: false
                 }
@@ -113,7 +129,7 @@ module.exports = function(grunt) {
 			scss: {
                 expand: true,
                 files: ['<%= settings.srcPath %>sass/**/*.scss'],
-                tasks: ['sass', 'postcss', 'cssmin'],
+                tasks: ['stylelint', 'sass', 'postcss', 'cssmin'],
                 options: {
                     spawn: false
                 }
@@ -132,6 +148,11 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     grunt.registerTask('default', ['watch']);
-    grunt.registerTask('build', [ 'babel', 'umd', 'uglify', 'sass', 'postcss', 'cssmin', 'htmlmin']);
+    grunt.registerTask('build', [
+		'eslint', 'stylelint',
+		'babel', 'umd', 'uglify',
+		'sass', 'postcss', 'cssmin',
+		'htmlmin'
+	]);
 
 };

@@ -15,89 +15,74 @@
   }
 }(this, function () {
 
-'use strict';
+"use strict";
 
 {
-    var jPopup = function jPopup() {
-        var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var jPopup = function jPopup() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    shouldSetHash = params.shouldSetHash == false ? false : true;
 
+    if (shouldSetHash == true) {
+      hashtagValue = typeof params.hashtagValue !== 'undefined' ? params.hashtagValue : '#popup';
+    }
 
-        shouldSetHash = params.hash == false ? false : true;
+    buildPopup(params.content).then(setupEvents).then(shouldSetHash == true && setHash(true));
+  };
 
-        buildPopup(params.content).then(setupEvents).then(shouldSetHash == true && setHash(true));
-    };
+  var buildPopup = function buildPopup(content) {
+    $html.classList.add('jPopupOpen');
+    return Promise.resolve(document.body.insertAdjacentHTML('beforeend', "<div class=\"jPopup\">\n                <button type=\"button\" class=\"jCloseBtn\">\n                    <div class=\"graphicIcon\"></div>\n                </button>\n                <div class=\"content\">".concat(content, "</div>\n            </div>")));
+  };
 
-    var buildPopup = function buildPopup(content) {
+  var setHash = function setHash(on) {
+    if (on == true) {
+      window.location.hash = hashtagValue;
+    } else {
+      window.history.back();
+    }
+  };
 
-        $html.classList.add('jPopupOpen');
+  var onEscPress = function onEscPress(event) {
+    event.keyCode == 27 && jPopup.prototype.close(true);
+  };
 
-        return Promise.resolve(document.body.insertAdjacentHTML('beforeend', '<div class="jPopup">\n\t\t\t\t<button type="button" class="jCloseBtn">\n\t\t\t\t\t<div class="graphicIcon"></div>\n                </button>\n                <div class="content">' + content + '</div>\n            </div>'));
-    };
+  var onHashChange = function onHashChange() {
+    window.location.hash !== hashtagValue && jPopup.prototype.close(false);
+  };
 
-    var setHash = function setHash(on) {
+  var setupEvents = function setupEvents() {
+    document.getElementsByClassName('jCloseBtn')[0].addEventListener('click', function () {
+      jPopup.prototype.close(true);
+    });
+    window.addEventListener('keydown', onEscPress);
+    shouldSetHash == true && window.addEventListener('hashchange', onHashChange);
+  };
 
-        if (on == true) {
+  'use strict';
 
-            window.location.hash = '#popup';
-        } else {
+  var $html = document.querySelector('html');
+  var shouldSetHash;
+  var hashtagValue;
+  jPopup.prototype = {
+    close: function close(popupEvent) {
+      $html.classList.add('jPopupClosed');
 
-            window.history.back();
-        }
-    };
+      if (shouldSetHash == true) {
+        popupEvent && setHash(false);
+        window.removeEventListener('hashchange', onHashChange);
+      }
 
-    var onEscPress = function onEscPress(event) {
-
-        event.keyCode == 27 && jPopup.prototype.close(true);
-    };
-
-    var onHashChange = function onHashChange() {
-
-        window.location.hash !== '#popup' && jPopup.prototype.close(false);
-    };
-
-    var setupEvents = function setupEvents() {
-
-        document.getElementsByClassName('jCloseBtn')[0].addEventListener('click', function () {
-            jPopup.prototype.close(true);
-        });
-
-        window.addEventListener('keydown', onEscPress);
-        shouldSetHash == true && window.addEventListener('hashchange', onHashChange);
-    };
-
-    'use strict';
-
-    var $html = document.querySelector('html');
-    var shouldSetHash = void 0;
-
-    jPopup.prototype = {
-        close: function close(popupEvent) {
-
-            $html.classList.add('jPopupClosed');
-
-            if (shouldSetHash == true) {
-
-                popupEvent && setHash(false);
-                window.removeEventListener('hashchange', onHashChange);
-            }
-
-            window.removeEventListener('keydown', onEscPress);
-
-            document.getElementsByClassName('jPopup')[0].addEventListener('animationend', function (e) {
-
-                e.target.parentNode.removeChild(this);
-
-                $html.classList.remove('jPopupClosed');
-                $html.classList.remove('jPopupOpen');
-            });
-        },
-        open: function open(params) {
-
-            jPopup(params);
-        }
-    };
-
-    window.jPopup = jPopup;
+      window.removeEventListener('keydown', onEscPress);
+      document.getElementsByClassName('jPopup')[0].addEventListener('animationend', function (e) {
+        e.target.parentNode.removeChild(this);
+        $html.classList.remove('jPopupClosed');
+        $html.classList.remove('jPopupOpen');
+      });
+    },
+    open: function open(params) {
+      jPopup(params);
+    }
+  };
 }
 
 return jPopup;

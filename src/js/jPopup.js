@@ -3,12 +3,17 @@
 
     const $html = document.querySelector('html');
     let shouldSetHash;
+    let hashtagValue;
 
     function jPopup(params = '') {
 
-        shouldSetHash = (params.hash == false) ? false : true;
+        shouldSetHash = (params.shouldSetHash == false) ? false : true;
 
-		buildPopup(params.content)
+        if (shouldSetHash == true) {
+            hashtagValue = typeof params.hashtagValue !== 'undefined' ? params.hashtagValue : '#popup';
+        }
+
+        buildPopup(params.content)
             .then(setupEvents)
             .then((shouldSetHash == true) && setHash(true));
 
@@ -20,8 +25,8 @@
 
         return Promise.resolve(document.body.insertAdjacentHTML('beforeend',
             `<div class="jPopup">
-				<button type="button" class="jCloseBtn">
-					<div class="graphicIcon"></div>
+                <button type="button" class="jCloseBtn">
+                    <div class="graphicIcon"></div>
                 </button>
                 <div class="content">${content}</div>
             </div>`
@@ -33,7 +38,7 @@
 
         if (on == true) {
 
-            window.location.hash = '#popup';
+            window.location.hash = hashtagValue;
 
         } else {
 
@@ -51,7 +56,7 @@
 
     function onHashChange() {
 
-        window.location.hash !== '#popup' && jPopup.prototype.close(false);
+        window.location.hash !== hashtagValue && jPopup.prototype.close(false);
 
     }
 
@@ -99,7 +104,5 @@
         }
 
     };
-
-    window.jPopup = jPopup;
 
 }

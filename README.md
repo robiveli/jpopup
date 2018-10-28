@@ -26,11 +26,17 @@ Include css:
 ```
 <link href='jPopup.min.css' rel='stylesheet' type='text/css'>
 ```
+or
+```
+@import "jPopup";
+```
+
 Initialize jPopup (popup opened immediately):
 ```
 <script>
     var myPopup = new jPopup({
-    	content: '<p>My popup text</p>'
+    	content: '<p>My popup text</p>',
+        hashtagValue: '#mypopup'
     });
 </script>
 ```
@@ -39,29 +45,14 @@ Initialize jPopup (popup opened immediately):
 
 Demo available [here](https://www.rvdizajn.com/jpopup/).
 
-### Example ###
-
-```
-<script>
-    document.querySelector('.openPopup').addEventListener('click', function() {
-
-        var jPopupDemo = new jPopup({
-
-            content: '<strong>Hurray</strong>\
-                    <p>You can put any content you want here.</p>'
-
-        });
-
-    });
-</script>
-```
 
 ### Options ###
 
 jPopup can take an optional parameters - an object of key/value settings:
 
 - **content** String *(required)* - string of content to display
-- **hash** Boolean *(default:true)* - should popup append hashtag (`#popup`) in the current url (applied [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API))
+- **shouldSetHash** Boolean *(default:true)* - should popup append hashtag in the current url (applied [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API))
+- **hashtagValue** String *(default:`#popup`)* - value of the appended hashtag (if value provided, no need to define `shouldSetHash`)
 
 Default css styling are placed in `/sass/library/_setup.scss`:
 
@@ -72,7 +63,7 @@ Default css styling are placed in `/sass/library/_setup.scss`:
 
 ### API ###
 
-`open()` - open popup
+`open()` - open popup (invoked immediately by creating new popup instance)
 
 `close()` - close popup
 

@@ -5,7 +5,7 @@ describe('jPopup', function() {
 
     before(function() {
 
-        dummyContent = '<h1>Title</h1>'
+        dummyContent = '<h1>Title</h1>';
 
         dummyPopup = new jPopup({ // open() method invoked
 
@@ -25,9 +25,9 @@ describe('jPopup', function() {
 
         });
 
-        it('should append new hastag in current url', function() {
+        it('should change hashtag in current url', function() {
 
-            expect(window.location.hash).equal('#popup');
+            expect(window.location.hash).not.equal('');
 
         });
 
@@ -35,7 +35,7 @@ describe('jPopup', function() {
 
     describe('close()', function() {
 
-        it('should remove popup from DOM', function() {
+        it('should remove popup element from DOM', function() {
 
             var animationTime = 350;
 
