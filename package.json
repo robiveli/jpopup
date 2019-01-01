@@ -57,6 +57,7 @@
         "stylelint-scss": "^3.4.4"
     },
     "scripts": {
+        "preinstall": "npm install np -g",
         "watch": "grunt watch",
         "build": "karma start && grunt build",
         "test": "karma start"
