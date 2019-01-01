@@ -1,43 +1,14 @@
-@-webkit-keyframes slideIn {
-  0% {
-    opacity: 0;
-    -webkit-transform: scale(0.85);
-    transform: scale(0.85);
-  }
-  70% {
-    opacity: 1;
-    -webkit-transform: scale(1.03);
-    transform: scale(1.03);
-  }
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-}
-
 @keyframes slideIn {
   0% {
     opacity: 0;
-    -webkit-transform: scale(0.85);
     transform: scale(0.85);
   }
   70% {
     opacity: 1;
-    -webkit-transform: scale(1.03);
     transform: scale(1.03);
   }
   100% {
-    -webkit-transform: scale(1);
     transform: scale(1);
-  }
-}
-
-@-webkit-keyframes slideOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
   }
 }
 
@@ -50,24 +21,11 @@
   }
 }
 
-@-webkit-keyframes rotate {
-  from {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-}
-
 @keyframes rotate {
   from {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   to {
-    -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
   }
 }
@@ -128,26 +86,22 @@
 }
 
 .jPopup > .jCloseBtn > .graphicIcon:before {
-  -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-          transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
 }
 
 .jPopup > .jCloseBtn > .graphicIcon:after {
-  -webkit-transform: rotate(-45deg);
-      -ms-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
 }
 
 .jPopup > .jCloseBtn:hover > .graphicIcon {
-  -webkit-animation: rotate 250ms ease-in;
   animation: rotate 250ms ease-in;
 }
 
 .jPopup > .jCloseBtn:active {
-  -webkit-transform: scale(0.95);
-      -ms-transform: scale(0.95);
-          transform: scale(0.95);
+  -ms-transform: scale(0.95);
+      transform: scale(0.95);
 }
 
 .jPopup > .content {
@@ -156,7 +110,6 @@
   right: 1.5rem;
   position: absolute;
   z-index: 9999;
-  -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
       transform: translateY(-50%);
 }
@@ -177,9 +130,8 @@
     top: 6.5rem;
     left: 50%;
     font-size: 1.1rem;
-    -webkit-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-            transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
     color: #adadad;
     pointer-events: none;
   }
@@ -202,11 +154,9 @@
 }
 
 .jPopupOpen .jPopup {
-  -webkit-animation: slideIn 500ms cubic-bezier(.34,.34,.26,.99);
   animation: slideIn 500ms cubic-bezier(.34,.34,.26,.99);
 }
 
 .jPopupClosed .jPopup {
-  -webkit-animation: slideOut 250ms ease-in;
   animation: slideOut 250ms ease-in;
 }
