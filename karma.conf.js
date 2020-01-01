@@ -1,3 +1,5 @@
+process.env.CHROME_BIN = require('puppeteer').executablePath();
+
 module.exports = function (config) {
 
     'use strict';
@@ -10,7 +12,7 @@ module.exports = function (config) {
 			'karma-chai',
 			'karma-sinon',
 			'karma-coverage',
-			'karma-phantomjs-launcher',
+			'karma-chrome-launcher',
 			'karma-mocha-reporter',
 			'karma-babel-preprocessor'
 		],
@@ -59,7 +61,7 @@ module.exports = function (config) {
 			}
 		},
 
-        browsers: ['PhantomJS']
+        browsers: ['ChromeHeadless']
 
     });
 
