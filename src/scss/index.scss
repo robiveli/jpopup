@@ -1,0 +1,171 @@
+.jPopup {
+    $baseBreakpoint: 680px; // breakpoint
+    $bgColor: #fff; // popup background color
+    $closeBtnColor: #adadad; // close button color
+    $zIndex: 9999; // popup z-index value
+
+    $root: &;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $zIndex;
+    max-width: 100%;
+    padding: 6rem;
+    background: $bgColor;
+    opacity: 0;
+
+    &--fade {
+        pointer-events: none;
+    }
+
+    &--slideInFromTop {
+        transform: translateY(-100%);
+    }
+
+    &--slideInFromBottom {
+        transform: translateY(100%);
+    }
+
+    &--slideInFromRight {
+        transform: translateX(100%);
+    }
+
+    &--slideInFromLeft {
+        transform: translateX(-100%);
+    }
+
+    &-closeBtn {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        width: 5rem;
+        height: 5rem;
+        outline: 0;
+        border: 0;
+        background-color: transparent;
+        cursor: pointer;
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            height: 2.6rem;
+            width: 0.3rem;
+            background-color: $closeBtnColor;
+        }
+
+        &:before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        &:after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    }
+
+    &-content {
+        top: 50%;
+        left: 1.5rem;
+        right: 1.5rem;
+        position: absolute;
+        transform: translateY(-50%);
+    }
+
+    &--isOpen {
+
+        #{$root}, body {
+            overflow: hidden;
+        }
+
+        #{$root} {
+            pointer-events: all;
+        }
+
+        #{$root}--fade {
+            animation: fade 350ms ease-in-out forwards;
+        }
+
+        #{$root}--slideInFromTop {
+            animation: slideInFromTop 350ms ease-in-out forwards;
+        }
+
+        #{$root}--slideInFromBottom {
+            animation: slideInFromBottom 350ms ease-in-out forwards;
+        }
+
+        #{$root}--slideInFromLeft {
+            animation: slideInFromLeft 350ms ease-in-out forwards;
+        }
+
+        #{$root}--slideInFromRight {
+            animation: slideInFromRight 350ms ease-in-out forwards;
+        }
+    }
+}
+
+// Animations
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromTop {
+
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromBottom {
+
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromRight {
+
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

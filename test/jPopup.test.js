@@ -1,57 +1,36 @@
-describe('jPopup', function() {
+describe('jPopup', function () {
 
     var dummyPopup,
         dummyContent;
 
-    before(function() {
+    before(function () {
 
         dummyContent = '<h1>Title</h1>';
 
-        dummyPopup = new jPopup({ // open() method invoked
-
+        dummyPopup = new jPopup({
             content: dummyContent
-
         });
-
     });
 
-    describe('open()', function() {
+    describe('open()', function () {
 
-        it('should open new popup with passed content', function() {
+        it('should open new popup with passed content', function () {
 
-            expect($('html').hasClass('jPopupOpen')).equal(true);
+            dummyPopup.open();
+
+            expect($('html').hasClass('jPopup--isOpen')).equal(true);
             expect($('.jPopup').length).equal(1);
-            expect($('.jPopup .content').html()).equal(dummyContent);
-
+            expect($('.jPopup-content').html()).equal(dummyContent);
         });
-
-        it('should change hashtag in current url', function() {
-
-            expect(window.location.hash).not.equal('');
-
-        });
-
     });
 
-    describe('close()', function() {
+    describe('close()', function () {
 
-        it('should remove popup element from DOM', function() {
-
-            var animationTime = 350;
+        it('should remove popup element from DOM', function () {
 
             dummyPopup.close();
 
-            return setTimeout(() => {
-
-                expect($('body').find('.jPopup').length).equal(0);
-				expect(window.location.hash).equal('');
-				expect($('html').hasClass('jPopupOpen')).equal(false);
-				expect($('html').hasClass('jPopupClosed')).equal(false);
-
-            }, animationTime);
-
+            expect($('html').hasClass('jPopup--isOpen')).equal(false);
         });
-
     });
-
 });

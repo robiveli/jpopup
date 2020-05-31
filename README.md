@@ -1,8 +1,12 @@
 # jPopup #
-### Simple lightweight (<2kB) javascript popup modal plugin ###
+### Simple lightweight (<2kB) and easy-to-use javascript popup plugin ###
 
 ### Another popop? ###
-Yep, I needed simple as possible modal plugin for personal use, so jPopup was born.
+Yep, I needed simple as possible popup plugin for personal use, so jPopup was born.
+
+### Demo ###
+
+Demo available [here](https://www.rvdizajn.com/jpopup/).
 
 ### Install ###
 
@@ -14,85 +18,72 @@ npm install jpopup --save
 ### Usage ###
 
 Include required javascript:
-```
-<script src="jPopup.js"></script>
-```
-or
+
 ```
 import jPopup from 'jPopup';
 ```
 
-Include css:
+Optionally, include stylings (or style it as you wish):
 ```
-<link href='jPopup.min.css' rel='stylesheet' type='text/css'>
-```
-or
-```
-@import "jPopup";
+@import 'jPopup';
 ```
 
-Initialize jPopup (popup opened immediately):
+Define new instance and open popup:
 ```
 <script>
-    var myPopup = new jPopup({
-    	content: '<p>My popup text</p>',
-        hashtagValue: '#mypopup'
+    var myPopup = new jPopup({ // initialize jPopup
+    	content: '<p>Lorem Ipsum...</p>'
+        transition: 'fade',
+        onOpen: function ($popupElement) {
+            console.log('popup open');
+        },
+        onClose: function ($popupElement) {
+            console.log('popup closed');
+        }
     });
+
+    myPopup.open(); // open popup
 </script>
 ```
 
-### Demo ###
-
-Demo available [here](https://www.rvdizajn.com/jpopup/).
-
+And that's that! Now you should see HTML markup in document tree:
+```
+<div class="jPopup jPopup--fade">
+    <button type="button" class="jPopup-closeBtn"></button>
+    <div class="jPopup-content"><p>Lorem Ipsum...</p></div>
+</div>
+```
 
 ### Options ###
 
-jPopup can take an optional parameters - an object of key/value settings:
+jPopup can take just several parameters - an object of key/value settings:
 
-- **content** String *(required)* - string of content to display
-- **shouldSetHash** Boolean *(default:true)* - should popup append hashtag in the current url (applied [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API))
-- **hashtagValue** String *(default:`#popup`)* - value of the appended hashtag (if value provided, no need to define `shouldSetHash`)
-
-Default css styling are placed in `/sass/library/_setup.scss`:
-
-- **$baseBreakpoint** *(default:680px)* - media query breakpoint value
-- **$bgColor** *(default:#fff)* - popup background color
-- **$closeBtnColor** *(default:#adadad)* - base color of close button
+ Name                | Required | Type          | Default     | Description |
+| ---                | ---      | ---           | ---         | ---         |
+| content                 | true     | [String]      | ''  | Content to display |
+| transition                 | false     | [String]      | 'fade'  | Type of appearance animation. Possible animation transitions: 'fade', 'slideInFromTop', 'slideInFromBottom', 'slideInFromLeft' and 'slideInFromRight' |
+| onOpen                 | false     | [Function]      | null  | Callback to execute when popup is open,  returned argument is popup (type: *Element*) |
+| onClose                 | false     | [Function]      | null  | Callback to execute when popup is closed, returned argument is popup (type: *Element*)  |
 
 
 ### API ###
 
-`open()` - open popup (invoked immediately by creating new popup instance)
+`open()` - open popup
 
 `close()` - close popup
 
-For example:
-```
-<script>
+`setContent(content)` - set popup content (`@param {String}`)
 
-    var jPopupDemo = new jPopup({
+`getContent()` - get popup content (`@return {String}`)
 
-        content: 'Lorem Ipsum...'
-
-    });
-
-    setInterval(function() {
-
-        jPopupDemo.close();
-
-    }, 2000);
-
-</script>
-```
+`destroy()` - destroy popup (remove from DOM and unbind events)
 
 
 ### Browser support ###
 
-It works in every modern browser where [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) and [classList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList) are supported.
+It works in every modern browser.
 
-Consider using polyfills for [Promise](https://github.com/stefanpenner/es6-promise) and [classList](https://github.com/eligrey/classList.js/) features if needed.
-
+---
 
 ### License  ###
 

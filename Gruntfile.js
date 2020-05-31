@@ -1,7 +1,7 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
-	const browsersList = grunt.file.readJSON('./package.json').browserslist;
-	const sass = require('node-sass');
+    const browsersList = grunt.file.readJSON('./package.json').browserslist;
+    const sass = require('node-sass');
 
     grunt.initConfig({
 
@@ -9,27 +9,27 @@ module.exports = function(grunt) {
             srcPath: 'src/',
             distPath: 'dist/',
             library: 'jPopup'
-		},
+        },
 
-		eslint: {
-			options: {
-				configFile: '.eslintrc.json'
-			},
-			target: ['<%= settings.srcPath %>js/<%= settings.library %>.js']
-		},
+        eslint: {
+            options: {
+                configFile: '.eslintrc.json'
+            },
+            target: ['<%= settings.srcPath %>js/index.js']
+        },
 
-		stylelint: {
-			options: {
-				configFile: '.stylelintrc'
-			},
-			all: ['<%= settings.srcPath %>sass/**/*.scss']
-		},
+        stylelint: {
+            options: {
+                configFile: '.stylelintrc'
+            },
+            all: ['<%= settings.srcPath %>scss/**/*.scss']
+        },
 
         babel: {
             dist: {
                 files: {
-                    '<%= settings.distPath %>js/<%= settings.library %>.js': [
-                        '<%= settings.srcPath %>js/<%= settings.library %>.js'
+                    '<%= settings.distPath %>js/index.js': [
+                        '<%= settings.srcPath %>js/index.js'
                     ]
                 }
             }
@@ -41,8 +41,8 @@ module.exports = function(grunt) {
                     beautify: false
                 },
                 files: {
-                    '<%= settings.distPath %>js/<%= settings.library %>.min.js': [
-                        '<%= settings.distPath %>js/<%= settings.library %>.js'
+                    '<%= settings.distPath %>js/index.min.js': [
+                        '<%= settings.distPath %>js/index.js'
                     ]
                 }
             }
@@ -51,32 +51,32 @@ module.exports = function(grunt) {
         umd: {
             all: {
                 options: {
-                    src: '<%= settings.distPath %>js/<%= settings.library %>.js',
-                    dest: '<%= settings.distPath %>js/<%= settings.library %>.js',
+                    src: '<%= settings.distPath %>js/index.js',
+                    dest: '<%= settings.distPath %>js/index.js',
                     objectToExport: '<%= settings.library %>',
                 }
             }
-		},
+        },
 
-		sass: {
+        sass: {
             app: {
                 files: [{
                     expand: true,
-                    cwd: '<%= settings.srcPath %>sass',
+                    cwd: '<%= settings.srcPath %>scss',
                     src: ['**/*.scss'],
                     dest: '<%= settings.distPath %>css',
                     ext: '.css'
                 }],
                 options: {
-					implementation: sass,
+                    implementation: sass,
                     outputStyle: 'expanded',
                     sourceMap: false,
                     precision: 5
                 }
             }
-		},
+        },
 
-		postcss: {
+        postcss: {
             options: {
                 map: false,
                 processors: [
@@ -86,27 +86,27 @@ module.exports = function(grunt) {
             dist: {
                 src: '<%= settings.distPath %>css/**/*.css'
             }
-		},
+        },
 
-		cssmin: {
+        cssmin: {
             target: {
                 files: [{
                     expand: true,
                     cwd: '<%= settings.distPath %>css',
                     src: ['*.css', '!*.min.css'],
-					dest: '<%= settings.distPath %>css',
-					ext: '.min.css'
+                    dest: '<%= settings.distPath %>css',
+                    ext: '.min.css'
                 }]
             }
         },
 
         htmlmin: {
             dist: {
-              options: {
-                removeComments: true,
-                collapseWhitespace: true
-              },
-              files: [{
+                options: {
+                    removeComments: true,
+                    collapseWhitespace: true
+                },
+                files: [{
                     expand: true,
                     cwd: '<%= settings.srcPath %>',
                     src: ['**/*.html'],
@@ -123,10 +123,10 @@ module.exports = function(grunt) {
                 options: {
                     spawn: false
                 }
-			},
-			scss: {
+            },
+            scss: {
                 expand: true,
-                files: ['<%= settings.srcPath %>sass/**/*.scss'],
+                files: ['<%= settings.srcPath %>scss/**/*.scss'],
                 tasks: ['stylelint', 'sass', 'postcss', 'cssmin'],
                 options: {
                     spawn: false
@@ -147,10 +147,10 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', ['watch']);
     grunt.registerTask('build', [
-		'eslint', 'stylelint',
-		'babel', 'umd', 'uglify',
-		'sass', 'postcss', 'cssmin',
-		'htmlmin'
-	]);
+        'eslint', 'stylelint',
+        'babel', 'umd', 'uglify',
+        'sass', 'postcss', 'cssmin',
+        'htmlmin'
+    ]);
 
 };

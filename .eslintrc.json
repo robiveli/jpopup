@@ -16,7 +16,8 @@
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "no-inner-declarations": 0
     },
     "parserOptions": {
         "sourceType": "module"
