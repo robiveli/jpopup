@@ -6,7 +6,7 @@ Yep, I needed simple as possible popup plugin for personal use, so jPopup was bo
 
 ### Demo ###
 
-Demo available [here](https://www.rvdizajn.com/jpopup/).
+Demo available [here](https://robiveli.github.io/jpopup/).
 
 ### Install ###
 
