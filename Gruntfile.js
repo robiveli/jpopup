@@ -127,6 +127,17 @@ module.exports = function (grunt) {
             }
         },
 
+        browserSync: {
+            bsFiles: {
+                src : '<%= settings.srcPath %>js/*.js'
+            },
+            options: {
+                server: {
+                    baseDir: '<%= settings.distPath %>'
+                }
+            }
+        },
+
         watch: {
             javascript: {
                 expand: true,
@@ -160,7 +171,7 @@ module.exports = function (grunt) {
 
     require('load-grunt-tasks')(grunt);
 
-    grunt.registerTask('default', ['watch']);
+    grunt.registerTask('default', ['browserSync', 'watch']);
     grunt.registerTask('build', [
         'eslint', 'stylelint',
         'babel', 'umd', 'uglify',
