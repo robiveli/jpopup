@@ -5,38 +5,26 @@ module.exports = function (config) {
     'use strict';
 
     config.set({
-
-		frameworks: ['mocha', 'chai', 'sinon'],
-		plugins: [
-			'karma-mocha',
-			'karma-chai',
-			'karma-sinon',
-			'karma-coverage',
-			'karma-chrome-launcher',
-			'karma-mocha-reporter',
-			'karma-babel-preprocessor'
-		],
-
-        files: [
-            'https://code.jquery.com/jquery-2.2.4.min.js',
-			'node_modules/@babel/polyfill/dist/polyfill.js',
-
-            'src/js/*.js',
-            'test/*.js'
-        ],
-
-        reporters: ['mocha', 'coverage'],
-
         port: 9876,
         autoWatch: false,
         singleRun: true,
-
+        browsers: ['ChromeHeadless'],
+		frameworks: ['mocha', 'chai', 'sinon'],
+        reporters: ['mocha', 'coverage'],
+        files: [
+            'https://code.jquery.com/jquery-2.2.4.min.js',
+        ],
         preprocessors: {
 			'**/src/js/*.js': 'coverage',
 			'src/js/*.js': ['babel'],
 			'test/*.js': ['babel']
         },
-
+        babelPreprocessor: {
+			options: {
+			  	presets: ['@babel/preset-env'],
+			  	sourceMap: 'inline'
+			}
+		},
         coverageReporter: {
             type : 'html',
             dir : 'coverage/',
@@ -52,17 +40,6 @@ module.exports = function (config) {
                 branches: [50, 90],
                 lines: [50, 90]
             }
-		},
-
-		babelPreprocessor: {
-			options: {
-			  	presets: ['@babel/env'],
-			  	sourceMap: 'inline'
-			}
-		},
-
-        browsers: ['ChromeHeadless']
-
+		}
     });
-
 };

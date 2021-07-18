@@ -1,6 +1,5 @@
 module.exports = function (grunt) {
 
-    const browsersList = grunt.file.readJSON('./package.json').browserslist;
     const sass = require('node-sass');
 
     grunt.initConfig({
@@ -115,6 +114,19 @@ module.exports = function (grunt) {
             }
         },
 
+        karma: {
+            unit: {
+                configFile: 'karma.conf.js',
+                autoWatch: true,
+                background: true,
+                singleRun: false,
+                files: [
+                    { src: ['<%= settings.srcPath %>js/index.js'], served: true, included: true, type: 'module' },
+                    { src: ['test/index.js'], served: true, included: true, type: 'module' },
+                ]
+            }
+        },
+
         watch: {
             javascript: {
                 expand: true,
@@ -138,9 +150,12 @@ module.exports = function (grunt) {
                 options: {
                     spawn: false
                 }
+            },
+            karma: {
+                tasks: ['karma:unit:start'],
+                files: ['<%= settings.srcPath %>js/index.js', 'test/index.js']
             }
         }
-
     });
 
     require('load-grunt-tasks')(grunt);
