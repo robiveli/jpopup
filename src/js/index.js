@@ -1,6 +1,6 @@
 {
 
-    const $html = document.querySelector('html');
+    let $html;
 
     /**
      * @param {Object}
@@ -21,6 +21,8 @@
         },
 
         _render() {
+            $html = document.querySelector('html');
+
             document.body.insertAdjacentHTML('beforeend',
                 `<div class="jPopup jPopup--${this.options.transition}"><button type="button" class="jPopup-closeBtn"></button><div class="jPopup-content">${this.options.content}</div></div>`
             );
@@ -81,7 +83,6 @@
 
         destroy() {
             window.removeEventListener('keydown', this._onEscPress);
-            this.$closeBtn.removeEventListener('click', this.close);
             this.$el.parentNode.removeChild(this.$el);
         }
     };

@@ -30,12 +30,13 @@
     this._init();
   };
 
-  var $html = document.querySelector('html');
+  var $html;
   jPopup.prototype = {
     _init: function _init() {
       this._render(this.options.content)._setupEvents();
     },
     _render: function _render() {
+      $html = document.querySelector('html');
       document.body.insertAdjacentHTML('beforeend', "<div class=\"jPopup jPopup--".concat(this.options.transition, "\"><button type=\"button\" class=\"jPopup-closeBtn\"></button><div class=\"jPopup-content\">").concat(this.options.content, "</div></div>"));
       this.$el = $html.querySelector('.jPopup');
       this.$closeBtn = $html.querySelector('.jPopup-closeBtn');
@@ -91,7 +92,6 @@
     },
     destroy: function destroy() {
       window.removeEventListener('keydown', this._onEscPress);
-      this.$closeBtn.removeEventListener('click', this.close);
       this.$el.parentNode.removeChild(this.$el);
     }
   };
