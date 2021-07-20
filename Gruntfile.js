@@ -129,7 +129,9 @@ module.exports = function (grunt) {
 
         browserSync: {
             bsFiles: {
-                src : '<%= settings.srcPath %>js/*.js'
+                src : [
+                    '<%= settings.distPath %>'
+                ],
             },
             options: {
                 server: {
@@ -162,6 +164,13 @@ module.exports = function (grunt) {
                     spawn: false
                 }
             },
+            browserSync: {
+                files: ['<%= settings.distPath %>'],
+                tasks: ['browserSync'],
+                options: {
+                    spawn: false
+                }
+            },
             karma: {
                 tasks: ['karma:unit:start'],
                 files: ['<%= settings.srcPath %>js/index.js', 'test/index.js']
@@ -171,7 +180,7 @@ module.exports = function (grunt) {
 
     require('load-grunt-tasks')(grunt);
 
-    grunt.registerTask('default', ['browserSync', 'watch']);
+    grunt.registerTask('default', ['watch', 'browserSync']);
     grunt.registerTask('build', [
         'eslint', 'stylelint',
         'babel', 'umd', 'uglify',

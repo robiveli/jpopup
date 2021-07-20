@@ -32,6 +32,7 @@
         "@lodder/grunt-postcss": "^3.0.1",
         "autoprefixer": "^10.3.1",
         "chai": "^4.3.4",
+        "concurrently": "^6.2.0",
         "eslint": "^7.31.0",
         "grunt": "^1.4.1",
         "grunt-babel": "^8.0.0",
@@ -66,7 +67,7 @@
     },
     "scripts": {
         "preinstall": "npm install -g np npm-check-updates",
-        "dev": "ncu && grunt build && grunt browserSync && grunt watch",
+        "dev": "ncu && grunt build && concurrently \"grunt watch\" \"grunt browserSync\"",
         "build": "grunt build && ncu && npm run browserslist",
         "test": "karma start",
         "test-dev": "grunt karma:unit:start watch",
