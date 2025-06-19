@@ -1,4 +1,5 @@
-<!doctype html><html lang="en"><head><title>jPopup - Simple and easy-to-use lightweight JavaScript popup plugin</title><meta charset="utf-8"><meta name="description" content="Simple lightweight javascript popup plugin"><meta name="robots" content="index, follow"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com/"><link rel="preconnect" href="https://buttons.github.io"><link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet"><script async defer="defer" src="https://buttons.github.io/buttons.js"></script><link href="css/index.css" rel="stylesheet" type="text/css"></head><style>/*** DEMO style ***/
+<!doctype html><html lang=en><head><title>jPopup - Simple and easy-to-use lightweight JavaScript popup plugin</title><meta charset=utf-8><meta name=description content="Simple lightweight javascript popup plugin"><meta name=robots content="index, follow"><meta name=viewport content="width=device-width, initial-scale=1"><link rel=preconnect href="https://fonts.googleapis.com/"><link rel=preconnect href=https://buttons.github.io><link href="https://fonts.googleapis.com/css?family=Comfortaa" rel=stylesheet><script async defer src=https://buttons.github.io/buttons.js></script><link href=css/index.css rel=stylesheet type=text/css></head><style>
+    /*** DEMO style ***/
 
     html {
         font-size: 62.5%;
@@ -140,7 +141,10 @@
         .jPopup-content p {
             font-size: 16px;
         }
-    }</style><body><main class="demoContent"><header class="header"><h1>jPopup</h1></header><h2>Simple lightweight JavaScript popup plugin</h2><button class="openPopupButton" type="button">Open popup</button><footer class="btnWrap"><a class="github-button" href="https://github.com/robiveli/jpopup" data-size="large" aria-label="View on GitHub">View on GitHub</a> <a class="github-button" href="https://github.com/robiveli/jpopup/archive/master.zip" data-icon="octicon-cloud-download" data-size="large" egaaria-label="Download robiveli/jCaptcha on GitHub">Download</a></footer></main><div class="icon"><svg enable-background="new 0 0 128 128" height="128px" id="Layer_1" viewBox="0 0 128 128" width="128px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><g><g><path d="M56,40H24v32h32V40z M24,88h80v-8H24V88z M24,104h80v-8H24V104z M64,40v8h40v-8H64z M64,64h40v-8H64V64z" fill="#e2e2e2"/></g></g><path d="M120,0H8C3.59,0,0,3.59,0,8v112c0,4.41,3.59,8,8,8h112c4.41,0,8-3.59,8-8V8C128,3.59,124.41,0,120,0z M100,8  c2.211,0,4,1.789,4,4s-1.789,4-4,4s-4-1.789-4-4S97.789,8,100,8z M28,8h56c2.211,0,4,1.789,4,4s-1.789,4-4,4H28  c-2.211,0-4-1.789-4-4S25.789,8,28,8z M12,8c2.211,0,4,1.789,4,4s-1.789,4-4,4s-4-1.789-4-4S9.789,8,12,8z M120,112  c0,4.41-3.59,8-8,8H16c-4.41,0-8-3.59-8-8V32c0-4.41,3.59-8,8-8h96c4.41,0,8,3.59,8,8V112z M116,16c-2.211,0-4-1.789-4-4  s1.789-4,4-4s4,1.789,4,4S118.211,16,116,16z" fill="#e2e2e2"/></svg></div><script src="js/index.js"></script><script>/*** DEMO js ***/
+    }
+</style><body><main class=demoContent><header class=header><h1>jPopup</h1></header><h2>Simple lightweight JavaScript popup plugin</h2><button class=openPopupButton type=button>Open popup</button><footer class=btnWrap><a class=github-button href=https://github.com/robiveli/jpopup data-size=large aria-label="View on GitHub">View on GitHub</a> <a class=github-button href=https://github.com/robiveli/jpopup/archive/master.zip data-icon=octicon-cloud-download data-size=large egaaria-label="Download robiveli/jCaptcha on GitHub">Download</a></footer></main><div class=icon><svg enable-background="new 0 0 128 128" height=128px id=Layer_1 viewbox="0 0 128 128" width=128px xml:space=preserve xmlns=http://www.w3.org/2000/svg><g><g><path d="M56,40H24v32h32V40z M24,88h80v-8H24V88z M24,104h80v-8H24V104z M64,40v8h40v-8H64z M64,64h40v-8H64V64z" fill=#e2e2e2></path></g></g><path d="M120,0H8C3.59,0,0,3.59,0,8v112c0,4.41,3.59,8,8,8h112c4.41,0,8-3.59,8-8V8C128,3.59,124.41,0,120,0z M100,8 c2.211,0,4,1.789,4,4s-1.789,4-4,4s-4-1.789-4-4S97.789,8,100,8z M28,8h56c2.211,0,4,1.789,4,4s-1.789,4-4,4H28 c-2.211,0-4-1.789-4-4S25.789,8,28,8z M12,8c2.211,0,4,1.789,4,4s-1.789,4-4,4s-4-1.789-4-4S9.789,8,12,8z M120,112 c0,4.41-3.59,8-8,8H16c-4.41,0-8-3.59-8-8V32c0-4.41,3.59-8,8-8h96c4.41,0,8,3.59,8,8V112z M116,16c-2.211,0-4-1.789-4-4 s1.789-4,4-4s4,1.789,4,4S118.211,16,116,16z" fill=#e2e2e2></path></svg></div><script src=js/index.js></script><script>
+
+        /*** DEMO js ***/
 
         var demoContent = '<div>\
             <strong>Hurray :)</strong>\
@@ -161,4 +165,6 @@
 
         document.querySelector('.openPopupButton').addEventListener('click', function () {
             jPopupDemo.open();
-        });</script></body></html>
+        });
+
+    </script></body></html>

@@ -26,10 +26,8 @@
     this.options = Object.assign({
       transition: 'fade'
     }, params);
-
     this._init();
   };
-
   var $html;
   jPopup.prototype = {
     _init: function _init() {
@@ -44,7 +42,6 @@
     },
     _setupEvents: function _setupEvents() {
       var _this = this;
-
       this.$closeBtn.addEventListener('click', function () {
         return _this.close();
       });
@@ -52,7 +49,6 @@
         return _this._onEscPress(e);
       });
     },
-
     /**
      * @param {Object}
     */
@@ -63,7 +59,6 @@
     },
     close: function close() {
       $html.classList.remove('jPopup--isOpen');
-
       if (this.options.onClose && typeof this.options.onClose == 'function') {
         this.options.onClose(this.$el);
       }
@@ -72,10 +67,8 @@
       if (this.options.onOpen && typeof this.options.onOpen == 'function') {
         this.options.onOpen(this.$el);
       }
-
       $html.classList.add('jPopup--isOpen');
     },
-
     /**
      * @param {String}
     */
@@ -83,7 +76,6 @@
       this.options.content = content;
       this.$el.querySelector('.jPopup-content').innerHTML = this.options.content;
     },
-
     /**
      * @return {String}
     */
